@@ -348,9 +348,10 @@ input[type="range"]::-moz-range-thumb {
     background: currentColor;
 }
 
+/* letters are always on, so this one can't be clicked */
 .option.is-fixed {
     cursor: default;
-    opacity: 0.6;
+    border-style: dashed;
 }
 
 .options input:focus-visible + .option {
