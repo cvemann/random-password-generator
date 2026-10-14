@@ -456,35 +456,6 @@ hr {
     color: var(--accent);
 }
 
-/* strength: the slanted lines fill up as the password gets stronger */
-.strength {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    color: var(--faint);
-    font-family: var(--font-mono);
-    font-size: 12px;
-}
-
-.strength-bar {
-    height: 8px;
-    border: 1px solid var(--line);
-    background: var(--bg);
-}
-
-.strength-fill {
-    display: block;
-    width: 0;
-    height: 100%;
-    background: repeating-linear-gradient(-24deg, var(--accent) 0 1px, transparent 1px 4px);
-    transition: width 0.4s var(--ease);
-}
-
-#bits {
-    color: var(--text);
-}
-
 /* the page rises in once when it opens */
 .header,
 .outputs {

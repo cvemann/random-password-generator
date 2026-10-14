@@ -85,7 +85,6 @@ function generatePassword() {
 
         showPassword(document.querySelector(".password-one"), passwordOne);
         showPassword(document.querySelector(".password-two"), passwordTwo);
-        showStrength(length, chosenCharacters.length);
 
         // the button shows it's working while the characters drop in
         genPassword.classList.add("is-working")
@@ -111,19 +110,6 @@ function showPassword(box, password) {
     box.querySelector(".password-sr").textContent = password
 }
 
-// how hard the password is to guess, in bits: length x log2(characters to pick from)
-function showStrength(length, poolSize) {
-    const bits = Math.round(length * Math.log2(poolSize))
-    let word = "very strong"
-    if (bits < 100) word = "strong"
-    if (bits < 80) word = "fair"
-    if (bits < 60) word = "weak"
-
-    document.querySelector("#bits").textContent = bits
-    document.querySelector("#strength-word").textContent = word
-    document.querySelector(".strength-fill").style.width = Math.min(100, bits / 128 * 100) + "%"
-}
-
 // tap a password to copy it
 function copyPassword() {
     const box = this
@@ -146,16 +132,8 @@ genPassword.addEventListener("click", generatePassword)
 
 lengthSlider.addEventListener("input", function () {
     lengthNumber.textContent = lengthSlider.value
-    showStrength(lengthSlider.value, pickCharacters().length)
-})
-numbersBox.addEventListener("change", function () {
-    showStrength(lengthSlider.value, pickCharacters().length)
-})
-symbolsBox.addEventListener("change", function () {
-    showStrength(lengthSlider.value, pickCharacters().length)
 })
 
 document.querySelector(".password-one").addEventListener("click", copyPassword)
 document.querySelector(".password-two").addEventListener("click", copyPassword)
 
-showStrength(lengthSlider.value, pickCharacters().length)
